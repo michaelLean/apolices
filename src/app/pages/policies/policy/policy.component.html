@@ -1,0 +1,72 @@
+<div class="container">
+  <div class="header">
+    <div class="header__action">
+      <button mat-icon-button (click)="close()">
+        <mat-icon>chevron_left</mat-icon>
+      </button>
+      Voltar
+    </div>
+  </div>
+  <div class="form" [formGroup]="form">
+    <mat-form-field>
+      <mat-label>Número da Apólice</mat-label>
+      <input
+        matInput
+        formControlName="policyNumber"
+        placeholder="Número da Apólice"
+        readonly
+      />
+      <mat-error *ngIf="form.controls.policyNumber.hasError('required')">
+        Número da Apólice é <strong>obrigatório</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Início da vigência</mat-label>
+      <input matInput formControlName="lifeTimeStart" [matDatepicker]="start" />
+      <mat-datepicker-toggle matSuffix [for]="start"></mat-datepicker-toggle>
+      <mat-datepicker #start></mat-datepicker>
+      <mat-error *ngIf="form.controls.lifeTimeStart.hasError('required')">
+        Início da vigência é <strong>obrigatório</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Fim da vigência</mat-label>
+      <input matInput formControlName="lifeTimeEnd" [matDatepicker]="end" />
+      <mat-datepicker-toggle matSuffix [for]="end"></mat-datepicker-toggle>
+      <mat-datepicker #end></mat-datepicker>
+      <mat-error *ngIf="form.controls.lifeTimeEnd.hasError('required')">
+        Fim da vigência é <strong>obrigatório</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Placa do veículo</mat-label>
+      <input
+        matInput
+        formControlName="vehicle"
+        placeholder="AAA1A11"
+        style="text-transform: uppercase"
+      />
+      <mat-error *ngIf="form.controls.vehicle.hasError('required')">
+        Placa do veículo é <strong>obrigatório</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Valor da Apólice</mat-label>
+      <input matInput formControlName="value" placeholder="R$ 5.000,00" />
+      <mat-error *ngIf="form.controls.value.hasError('required')">
+        Valor da Apólice é <strong>obrigatório</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div class="actions">
+    <button mat-button color="warn" (click)="close()">Cancelar</button>
+    <button
+      mat-raised-button
+      color="primary"
+      [disabled]="!form.valid"
+      (click)="save()"
+    >
+      Salvar
+    </button>
+  </div>
+</div>

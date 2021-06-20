@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="header">
+    <div class="header__action">
+      <button mat-icon-button (click)="close()">
+        <mat-icon>chevron_left</mat-icon>
+      </button>
+      Voltar
+    </div>
+  </div>
+  <div class="form" [formGroup]="form">
+    <mat-form-field>
+      <mat-label>Nome</mat-label>
+      <input matInput formControlName="name" placeholder="Nome do Cliente" />
+      <mat-error *ngIf="form.controls.name.hasError('required')">
+        Nome é <strong>obrigatório</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>CPF</mat-label>
+      <input
+        matInput
+        formControlName="cpf"
+        placeholder="CPF do Cliente"
+        mask="000.000.000-99"
+      />
+      <mat-error *ngIf="form.controls.cpf.hasError('required')">
+        CPF é <strong>obrigatório</strong>
+      </mat-error>
+      <mat-error *ngIf="form.controls.cpf.hasError('cpf')">
+        CPF <strong>inválido</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Cidade</mat-label>
+      <input matInput formControlName="city" placeholder="Cidade do Cliente" />
+      <mat-error *ngIf="form.controls.city.hasError('required')">
+        Cidade é <strong>obrigatório</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>UF</mat-label>
+      <mat-select formControlName="uf" placeholder="UF do Cliente">
+        <mat-option *ngFor="let uf of ufs" [value]="uf">{{ uf }}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.controls.uf.hasError('required')">
+        UF é <strong>obrigatório</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <div class="actions">
+    <button mat-button color="warn" (click)="close()">Cancelar</button>
+    <button
+      mat-raised-button
+      color="primary"
+      [disabled]="!form.valid"
+      (click)="save()"
+    >
+      Salvar
+    </button>
+  </div>
+</div>

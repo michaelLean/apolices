@@ -1,0 +1,21 @@
+{
+  "clients": [
+    {
+      "id": 1,
+      "name": "Test",
+      "cpf": "32727248008",
+      "city": "City Test",
+      "uf": "AC"
+    }
+  ],
+  "policies": [
+    {
+      "id": 2,
+      "policyNumber": "2805adb6-5b60-415d-8023-28574928a0ac",
+      "lifeTimeStart": "2021-06-01T03:00:00.000Z",
+      "lifeTimeEnd": "2021-06-16T03:00:00.000Z",
+      "value": "100000",
+      "vehicle": "AAA1A11"
+    }
+  ]
+}
