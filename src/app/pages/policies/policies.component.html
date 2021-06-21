@@ -10,6 +10,17 @@
       </button>
     </div>
   </div>
+
+  <div class="filter" [formGroup]="form">
+    <mat-form-field>
+      <mat-label>Número da Apólice</mat-label>
+      <input
+        matInput
+        formControlName="policyNumber"
+        placeholder="Número da Apólice"
+      />
+    </mat-form-field>
+  </div>
   <table mat-table [dataSource]="dataSource" class="table mat-elevation-z8">
     <ng-container matColumnDef="policyNumber">
       <th mat-header-cell *matHeaderCellDef>Número da apólice</th>

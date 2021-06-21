@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import Policy from 'src/app/core/models/policy.model';
@@ -18,10 +19,20 @@ export class PoliciesComponent implements OnInit {
     'actions',
   ];
   dataSource: MatTableDataSource<any> = new MatTableDataSource();
+  form = this.fb.group({
+    policyNumber: [''],
+  });
 
-  constructor(private router: Router, private policiesService: PolicyService) {}
+  constructor(
+    private router: Router,
+    private policiesService: PolicyService,
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit(): void {
+    this.form.valueChanges.subscribe((policyNumber) => {
+      this.dataSource.filter = policyNumber.trim();
+    });
     this.loadPolicies();
   }
 
